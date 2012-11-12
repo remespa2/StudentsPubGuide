@@ -35,8 +35,8 @@ public class MyItemizedOverlay extends ItemizedOverlay {
 	  return mOverlays.size();
 	}
 	
-	public void addOverlay(OverlayItem overlay) {
-	    mOverlays.add(overlay);
+	public void addOverlay(OverlayItem overlayItem) {
+	    mOverlays.add(overlayItem);
 	    populate();
 	}
 	

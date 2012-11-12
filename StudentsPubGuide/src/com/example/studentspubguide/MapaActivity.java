@@ -10,12 +10,13 @@ import android.view.Menu;
 import com.example.studentspubguide.mapa.MyItemizedOverlay;
 import com.example.studentspubguide.parse.Parser;
 import com.example.studentspubguide.parse.Placemark;
-import com.mapquest.android.maps.GeoPoint;
-import com.mapquest.android.maps.MapActivity;
-import com.mapquest.android.maps.MapView;
-import com.mapquest.android.maps.MyLocationOverlay;
-import com.mapquest.android.maps.Overlay;
-import com.mapquest.android.maps.OverlayItem;
+import com.google.android.maps.GeoPoint;
+import com.google.android.maps.MapActivity;
+import com.google.android.maps.MapView;
+import com.google.android.maps.MyLocationOverlay;
+import com.google.android.maps.Overlay;
+import com.google.android.maps.OverlayItem;
+
 
 public class MapaActivity extends MapActivity {
 	protected MapView map;
