@@ -7,16 +7,20 @@ public class Placemark {
 	private int latitude, longtitude;
 	private String name;
 	private String description;
-	
+	private String vzdalenost;
+	private String hodnocni;
+	private String pocetHodnoceni;
 
 	public Placemark(String id, String latitude, String longtitude,
-			String name, String description) {
+			String name, String description, String hodnoceni,String pocet) {
 		super();
 		this.id = id;
 		this.latitude= (int)(Integer.parseInt(latitude));
 		this.longtitude= (int)(Integer.parseInt(longtitude));
 		this.name = name;
 		this.description = description;
+		this.hodnocni = hodnoceni;
+		this.pocetHodnoceni = pocet;
 	}
 
 	public String getName() {
@@ -69,5 +73,29 @@ public class Placemark {
 
 	public void setLongtitude(int longtitude) {
 		this.longtitude = longtitude;
+	}
+
+	public String getVzdalenost() {
+		return vzdalenost;
+	}
+
+	public void setVzdalenost(String vzdalenost) {
+		this.vzdalenost = vzdalenost;
+	}
+
+	public String getHodnocni() {
+		return hodnocni;
+	}
+
+	public void setHodnocni(String hodnocni) {
+		this.hodnocni = hodnocni;
+	}
+
+	public String getPocetHodnoceni() {
+		return pocetHodnoceni;
+	}
+
+	public void setPocetHodnoceni(String pocetHodnoceni) {
+		this.pocetHodnoceni = pocetHodnoceni;
 	}
 }

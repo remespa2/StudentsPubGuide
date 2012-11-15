@@ -7,5 +7,7 @@
     <string name="title_activity_mapa">Zobrazení na mapě</string>
     <string name="title_activity_test">TestActivity</string>
     <string name="title_activity_add_pub">Přidej hospodu</string>
+    <string name="title_activity_seznam">Seznam</string>
+    <string name="title_activity_pub_detail">Detail Hospody</string>
 
 </resources>

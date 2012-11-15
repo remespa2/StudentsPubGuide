@@ -20,7 +20,6 @@
             android:id="@+id/editText0"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            
             android:inputType="textPersonName" />
 
         <TextView
@@ -70,7 +69,7 @@
         </EditText>
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/buttonADD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:width="100dp"

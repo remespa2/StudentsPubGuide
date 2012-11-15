@@ -40,10 +40,28 @@
         <activity
             android:name=".AddPubActivity"
             android:label="@string/title_activity_add_pub" >
+             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+               <!--  <category android:name="android.intent.category.LAUNCHER" /> -->
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SeznamActivity"
+            android:label="@string/title_activity_seznam" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+               <!--  <category android:name="android.intent.category.LAUNCHER" /> -->
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PubDetailActivity"
+            android:label="@string/title_activity_pub_detail" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+               <!--  <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
     </application>

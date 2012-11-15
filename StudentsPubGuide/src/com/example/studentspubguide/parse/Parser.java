@@ -17,6 +17,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 public class Parser {
+	//http://www.java-samples.com/showtutorial.php?tutorialid=152
 	private ArrayList<Placemark> myPlacemarks;
 	private Document dom;
 	
@@ -27,6 +28,7 @@ public class Parser {
 		parseDocument();
 	}
 	
+		
 	private void parseXmlFile(){
 		//get the factory
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -70,7 +72,7 @@ public class Parser {
 
 				//add it to list
 				//System.out.println("zprava z parseru"+pl.toString());
-				System.out.println("zde1");
+				
 				myPlacemarks.add(pl);
 			}
 		}
@@ -85,14 +87,16 @@ public class Parser {
 		String description = getTextValue(empEl, "description");
 		String latitude = getTextValue(empEl, "latitude");
 		String longtitude = getTextValue(empEl, "longtitude");
+		String hodnoceni = getTextValue(empEl, "hodnoceni");
+		String pocetHodnoc = getTextValue(empEl, "pocet");
 		
-		System.out.println("z parseru"+longtitude +" " +latitude +" "+ name);
+		//System.out.println("z parseru"+longtitude +" " +latitude +" "+ name);
 		
 		
 		//String type = empEl.getAttribute("type");
 
 		//Create a new Employee with the value read from the xml nodes
-		Placemark pl = new Placemark(id, latitude, longtitude, name, description);
+		Placemark pl = new Placemark(id, latitude, longtitude, name, description, hodnoceni, pocetHodnoc);
 		
 		
 		return pl;

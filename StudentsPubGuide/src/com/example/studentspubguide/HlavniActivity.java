@@ -14,6 +14,7 @@ public class HlavniActivity extends Activity {
 	private Button mapa;
 	private Button pridej;
 	private Button app;
+	private Button seznam;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +55,16 @@ public class HlavniActivity extends Activity {
 					}
 				});
 				dialog.show();
+				
+			}
+		});
+     // button seznam
+        final Intent intent3 = new Intent(getApplicationContext(), SeznamActivity.class);
+        mapa = (Button) findViewById(R.id.button2);
+        mapa.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				startActivity(intent3);
 				
 			}
 		});
