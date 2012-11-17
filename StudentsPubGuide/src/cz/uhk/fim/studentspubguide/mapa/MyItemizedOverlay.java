@@ -1,4 +1,4 @@
-package com.example.studentspubguide.mapa;
+package cz.uhk.fim.studentspubguide.mapa;
 
 import java.util.ArrayList;
 
@@ -6,9 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 
-import com.example.studentspubguide.PubDetailActivity;
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.OverlayItem;
+
+import cz.uhk.fim.studentspubguide.PubDetailActivity;
 
 public class MyItemizedOverlay extends ItemizedOverlay {
 	private ArrayList<MyOverlayItem> mOverlays = new ArrayList<MyOverlayItem>();

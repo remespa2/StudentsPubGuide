@@ -1,4 +1,6 @@
-package com.example.studentspubguide;
+package cz.uhk.fim.studentspubguide;
+
+import cz.uhk.fim.studentspubguide.R;
 
 import android.app.Activity;
 import android.os.Bundle;

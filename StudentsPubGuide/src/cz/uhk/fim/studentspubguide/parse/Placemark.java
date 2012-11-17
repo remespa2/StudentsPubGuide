@@ -1,4 +1,4 @@
-package com.example.studentspubguide.parse;
+package cz.uhk.fim.studentspubguide.parse;
 
 import com.google.android.maps.GeoPoint;
 

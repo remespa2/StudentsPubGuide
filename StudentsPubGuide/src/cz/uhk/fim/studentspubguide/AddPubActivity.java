@@ -1,4 +1,4 @@
-package com.example.studentspubguide;
+package cz.uhk.fim.studentspubguide;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,6 +12,8 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+
+import cz.uhk.fim.studentspubguide.R;
 
 import android.app.Activity;
 import android.content.Context;

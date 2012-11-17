@@ -1,4 +1,4 @@
-package com.example.studentspubguide.parse;
+package cz.uhk.fim.studentspubguide.parse;
 
 import java.io.IOException;
 import java.io.InputStreamReader;

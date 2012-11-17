@@ -1,4 +1,4 @@
-package com.example.studentspubguide;
+package cz.uhk.fim.studentspubguide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,15 +7,17 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 
-import com.example.studentspubguide.mapa.MyItemizedOverlay;
-import com.example.studentspubguide.mapa.MyOverlayItem;
-import com.example.studentspubguide.parse.Parser;
-import com.example.studentspubguide.parse.Placemark;
+import cz.uhk.fim.studentspubguide.R;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
+
+import cz.uhk.fim.studentspubguide.mapa.MyItemizedOverlay;
+import cz.uhk.fim.studentspubguide.mapa.MyOverlayItem;
+import cz.uhk.fim.studentspubguide.parse.Parser;
+import cz.uhk.fim.studentspubguide.parse.Placemark;
 
 
 public class MapaActivity extends MapActivity {
@@ -60,6 +62,7 @@ public class MapaActivity extends MapActivity {
           //@Override
           public void run() {
             GeoPoint currentLocation = myLocationOverlay.getMyLocation();
+            map.setSatellite(true);
             map.getController().animateTo(currentLocation);
             map.getController().setZoom(14);
             map.getOverlays().add(myLocationOverlay);
