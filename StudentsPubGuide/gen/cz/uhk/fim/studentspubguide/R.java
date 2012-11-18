@@ -51,8 +51,7 @@ public final class R {
         public static final int activity_mapa=0x7f030002;
         public static final int activity_pub_detail=0x7f030003;
         public static final int activity_seznam=0x7f030004;
-        public static final int activity_test=0x7f030005;
-        public static final int dvouradkovy_seznam=0x7f030006;
+        public static final int dvouradkovy_seznam=0x7f030005;
     }
     public static final class menu {
         public static final int activity_add_pub=0x7f060000;

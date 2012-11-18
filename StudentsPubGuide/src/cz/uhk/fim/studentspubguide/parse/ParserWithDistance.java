@@ -1,20 +1,11 @@
 package cz.uhk.fim.studentspubguide.parse;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
+import java.util.concurrent.ExecutionException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 
 public class ParserWithDistance {
 	//http://www.java-samples.com/showtutorial.php?tutorialid=152
@@ -25,7 +16,7 @@ public class ParserWithDistance {
 	private Document dom;
 	private int latitude, longitude, radius;
 	
-	public ParserWithDistance(int latitude, int longitude, int radius) {
+	public ParserWithDistance(int latitude, int longitude, int radius) throws InterruptedException, ExecutionException {
 		myPlacemarks = new ArrayList<Placemark>();
 		this.latitude = latitude;
 		this.longitude = longitude;
@@ -37,33 +28,15 @@ public class ParserWithDistance {
 	
 	
 		
-	private void parseXmlFile(){
+	private void parseXmlFile() throws InterruptedException, ExecutionException{
 		//
 		// TATO TRIDA VZNIKLA, PROTOZE SE MI NECHTELO PRETEZOVAT METODY, NEBYLO BY TO CITELNY
 		//
 		//get the factory
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
-		try {
-
-			//URL url = new URL("http://zkonachodsport.4fan.cz/mapa.xml");
-			URL url = new URL("http://www.zkonachodsport.4fan.cz/StudentsPubGuide/index.php/feed/getNear/"
-							+this.latitude+"/"+this.longitude+"/"+this.radius);
-			System.out.println(url.toString());
-			//Using factory get an instance of document builder
-			DocumentBuilder db = dbf.newDocumentBuilder();
-
-			//parse using builder to get DOM representation of the XML file
-			this.dom = db.parse(new InputSource(new InputStreamReader(url.openConnection().getInputStream(), "UTF-8")));
-
-
-		}catch(ParserConfigurationException pce) {
-			pce.printStackTrace();
-		}catch(SAXException se) {
-			se.printStackTrace();
-		}catch(IOException ioe) {
-			ioe.printStackTrace();
-		}
+		
+		//toto jsem celý nahradil tøídou async task, takhle se spustí, pøedá parametr a získá výsledek - obzb
+		dom = new XmlTask(latitude, longitude, radius).execute("http://www.zkonachodsport.4fan.cz/StudentsPubGuide/index.php/feed/getNear/").get();
+		
 	}
 	
 	private void parseDocument(){

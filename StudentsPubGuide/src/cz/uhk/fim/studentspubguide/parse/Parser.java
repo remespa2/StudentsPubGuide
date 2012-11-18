@@ -1,27 +1,18 @@
 package cz.uhk.fim.studentspubguide.parse;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
+import java.util.concurrent.ExecutionException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 
 public class Parser {
 	//http://www.java-samples.com/showtutorial.php?tutorialid=152
 	private ArrayList<Placemark> myPlacemarks;
 	private Document dom;
 	
-	public Parser() {
+	public Parser() throws InterruptedException, ExecutionException {
 		myPlacemarks = new ArrayList<Placemark>();
 		
 		parseXmlFile();
@@ -29,29 +20,10 @@ public class Parser {
 	}
 	
 		
-	private void parseXmlFile(){
-		//get the factory
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+	private void parseXmlFile() throws InterruptedException, ExecutionException{
+		//pøedìláno asynctaskem, více viz parserwithdistance
+		dom = new XmlTaskSimple().execute("http://www.zkonachodsport.4fan.cz/StudentsPubGuide/index.php/feed/index").get();
 
-		try {
-
-			//URL url = new URL("http://zkonachodsport.4fan.cz/mapa.xml");
-			URL url = new URL("http://www.zkonachodsport.4fan.cz/StudentsPubGuide/index.php/feed/index");
-			
-			//Using factory get an instance of document builder
-			DocumentBuilder db = dbf.newDocumentBuilder();
-
-			//parse using builder to get DOM representation of the XML file
-			this.dom = db.parse(new InputSource(new InputStreamReader(url.openConnection().getInputStream(), "UTF-8")));
-
-
-		}catch(ParserConfigurationException pce) {
-			pce.printStackTrace();
-		}catch(SAXException se) {
-			se.printStackTrace();
-		}catch(IOException ioe) {
-			ioe.printStackTrace();
-		}
 	}
 	
 	private void parseDocument(){

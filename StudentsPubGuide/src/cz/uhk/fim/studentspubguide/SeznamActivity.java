@@ -45,8 +45,21 @@ public class SeznamActivity extends Activity {
         findPosition();
         
         //System.out.println(latitude + " " + longitude);
-        ParserWithDistance pwd = new ParserWithDistance(latitude, longitude, radius);
-        this.placemarks = pwd.getMyPlacmarks();
+        //ParserWithDistance pwd = new ParserWithDistance(latitude, longitude, radius);
+        ParserWithDistance pwd;
+        try {
+			pwd = new ParserWithDistance(latitude, longitude, radius);
+			this.placemarks = pwd.getMyPlacmarks();
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			pwd = null;
+			this.placemarks = new ArrayList<Placemark>();
+		}
+
+        
+        
         
         /*ArrayList<String> plcStr = new ArrayList<String>();
         */

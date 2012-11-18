@@ -30,13 +30,7 @@
             android:name=".MapaActivity"
             android:label="@string/title_activity_mapa" >
         </activity>
-        <activity
-            android:name=".TestActivity"
-            android:label="@string/title_activity_test" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.examples.studentspubguide.HlavniActivity" />
-        </activity>
+       
         <activity
             android:name=".AddPubActivity"
             android:label="@string/title_activity_add_pub" >
