@@ -62,8 +62,8 @@ public class HlavniActivity extends Activity {
 		});
      // button seznam
         final Intent intent3 = new Intent(getApplicationContext(), SeznamActivity.class);
-        mapa = (Button) findViewById(R.id.button2);
-        mapa.setOnClickListener(new View.OnClickListener() {
+        seznam = (Button) findViewById(R.id.button2);
+        seznam.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
 				startActivity(intent3);

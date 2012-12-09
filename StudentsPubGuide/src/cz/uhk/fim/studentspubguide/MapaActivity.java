@@ -4,12 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
-import android.view.View.OnLongClickListener;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -19,6 +16,7 @@ import com.google.android.maps.Overlay;
 
 import cz.uhk.fim.studentspubguide.mapa.MyItemizedOverlay;
 import cz.uhk.fim.studentspubguide.mapa.MyOverlayItem;
+import cz.uhk.fim.studentspubguide.memory.Memory;
 import cz.uhk.fim.studentspubguide.parse.Parser;
 import cz.uhk.fim.studentspubguide.parse.Placemark;
 
@@ -42,10 +40,12 @@ public class MapaActivity extends MapActivity {
         MyItemizedOverlay itemizedoverlay = new MyItemizedOverlay(drawable, this);
         
         try {
+        	Memory.getPlacemarks().clear();
 			parser = new Parser();
-			places = parser.getMyPlacmarks();
+			//places = parser.getMyPlacmarks();
+			places = Memory.getPlacemarks();
 			 for (Placemark place : places) {
-		        	itemizedoverlay.addOverlay(new MyOverlayItem(new GeoPoint(place.getLatitude(), place.getLongtitude()), place.getName(), place.getDescription(), place.getHodnocni(), place.getPocetHodnoceni()));
+		        	itemizedoverlay.addOverlay(new MyOverlayItem(new GeoPoint(place.getLatitude(), place.getLongtitude()), place.getName(), place.getDescription(), place.getHodnocni(), place.getPocetHodnoceni(),place.getId()));
 		        	//itemizedoverlay.addOverlay(new OverlayItem(place.getPoint().getGeoPoint(),place.getName(), place.getDescription()));
 				}
 			 mapOverlays.add(itemizedoverlay);
@@ -82,19 +82,13 @@ public class MapaActivity extends MapActivity {
 	    //map.setTraffic(true);
 	    map.setLongClickable(true);
 	    
-	   map.setOnLongClickListener(new OnLongClickListener() {
-			
-			public boolean onLongClick(View v) {
-				startActivity(new Intent(map.getContext(), AddPubActivity.class));
-				return false;
-			}
-		});
-		
+	   
 	}
 
     
 	private void setupMyLocation() {
 		this.myLocationOverlay = new MyLocationOverlay(this, map);
+		
         myLocationOverlay.enableMyLocation();
         myLocationOverlay.runOnFirstFix(new Runnable() {
           //@Override
@@ -126,8 +120,15 @@ public class MapaActivity extends MapActivity {
 	@Override
 	protected void onResume() {
 		myLocationOverlay.enableMyLocation();
-	    myLocationOverlay.enableCompass();
+	    //myLocationOverlay.enableCompass();
 	    super.onResume();
+	}
+	
+	@Override
+	protected void onPause() {
+		myLocationOverlay.disableMyLocation();
+		//myLocationOverlay.disableCompass();
+		super.onPause();
 	}
 	
 	

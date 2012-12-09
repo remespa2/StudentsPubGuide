@@ -19,6 +19,7 @@ import android.widget.SimpleAdapter;
 
 import cz.uhk.fim.studentspubguide.R;
 
+import cz.uhk.fim.studentspubguide.memory.Memory;
 import cz.uhk.fim.studentspubguide.parse.ParserWithDistance;
 import cz.uhk.fim.studentspubguide.parse.Placemark;
 
@@ -35,6 +36,7 @@ public class SeznamActivity extends Activity {
 	public final static String POPIS = "b";
 	public final static String HODNOCENI = "v";
 	public final static String POCET_HODNOTITELU = "c";
+	private ParserWithDistance pwd;
 	
     //http://developer.android.com/training/basics/firstapp/starting-activity.html
     @Override
@@ -46,10 +48,13 @@ public class SeznamActivity extends Activity {
         
         //System.out.println(latitude + " " + longitude);
         //ParserWithDistance pwd = new ParserWithDistance(latitude, longitude, radius);
-        ParserWithDistance pwd;
+        
         try {
+        	Memory.getPlacemarksWithDistance().clear();
 			pwd = new ParserWithDistance(latitude, longitude, radius);
-			this.placemarks = pwd.getMyPlacmarks();
+			
+			//this.placemarks = pwd.getMyPlacmarks();
+			//this.placemarks = Memory.getPlacemarksWithDistance();
 		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -71,7 +76,7 @@ public class SeznamActivity extends Activity {
         //http://tekeye.biz/2012/two-line-lists-in-android
         ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
         HashMap<String,String> item;
-        for (Placemark place : placemarks) {
+        for (Placemark place : Memory.getPlacemarksWithDistance()) {
         	item = new HashMap<String,String>();
 			item.put("line1", place.getName());
 			item.put("line2", place.getHodnocni());
@@ -90,6 +95,7 @@ public class SeznamActivity extends Activity {
         
         
         ListView listView = (ListView) findViewById(R.id.listView1);
+        listView.refreshDrawableState();
         listView.setAdapter(adapter1);
         
         
@@ -100,10 +106,11 @@ public class SeznamActivity extends Activity {
         	public void onItemClick(AdapterView parent, View v, int position, long id) {
         			Placemark place = placemarks.get(position); 	
         		
-        			String nazev = place.getName();
-        		    intent1.putExtra(NAZEV, nazev);
+        			//String nazev = place.getName();
+        			Memory.setTrans(place.getId());
+        			//intent1.putExtra(NAZEV, place.getId());
         		    
-        		    String hodnoceni = place.getHodnocni();
+        		   /* String hodnoceni = place.getHodnocni();
         		    intent1.putExtra(HODNOCENI, hodnoceni);
         		    
         		    String popis = place.getDescription();
@@ -112,7 +119,7 @@ public class SeznamActivity extends Activity {
         		    String pocet = place.getPocetHodnoceni();
         		    intent1.putExtra(POCET_HODNOTITELU, pocet);
         		    
-        		    
+        		    */
         		    startActivity(intent1);
         		
             }
@@ -148,6 +155,28 @@ public class SeznamActivity extends Activity {
     	
 		
 	}
+    
+    @Override
+    protected void onPause() {
+    	Memory.getPlacemarksWithDistance();
+    	super.onPause();
+    }
+    
+    @Override
+    protected void onResume() {
+    	try {
+			pwd = new ParserWithDistance(latitude, longitude, radius);
+			//this.placemarks = pwd.getMyPlacmarks();
+			this.placemarks = Memory.getPlacemarksWithDistance();
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			pwd = null;
+			this.placemarks = new ArrayList<Placemark>();
+		}
+    	super.onResume();
+    }
 
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {

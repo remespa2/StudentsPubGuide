@@ -39,7 +39,7 @@ public class XmlTask extends AsyncTask<String, Void, Document>{
 
 			//parse using builder to get DOM representation of the XML file
 			this.dom = db.parse(new InputSource(new InputStreamReader(url.openConnection().getInputStream(), "UTF-8")));
-			System.out.println("tady to spadlo");
+			//System.out.println("tady to spadlo");
 			return dom;
 
 		}catch(ParserConfigurationException pce) {

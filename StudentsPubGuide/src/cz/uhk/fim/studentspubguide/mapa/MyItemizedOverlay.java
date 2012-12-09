@@ -6,10 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 
+import com.google.android.maps.GeoPoint;
 import com.google.android.maps.ItemizedOverlay;
+import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
 
 import cz.uhk.fim.studentspubguide.PubDetailActivity;
+import cz.uhk.fim.studentspubguide.memory.Memory;
 
 public class MyItemizedOverlay extends ItemizedOverlay {
 	private ArrayList<MyOverlayItem> mOverlays = new ArrayList<MyOverlayItem>();
@@ -55,11 +58,12 @@ public class MyItemizedOverlay extends ItemizedOverlay {
 	  //dialog.setMessage(item.getSnippet());
 	  //dialog.show();
 	  
-	  
+	  System.out.println(index);
 	  	Intent intent = new Intent(mContext, PubDetailActivity.class);
-	  
+	  	Memory.setTrans(item.getId());
+	  	//intent.putExtra(NAZEV, item.getId());
 	    //EditText editText = (EditText) findViewById(R.id.edit_message);
-	    String nazev = item.getTitle();
+	   /* String nazev = item.getTitle();
 	    intent.putExtra(NAZEV, nazev);
 	    
 	    String hodnoceni = item.getHodnoceni();
@@ -70,13 +74,22 @@ public class MyItemizedOverlay extends ItemizedOverlay {
 	    
 	    String pocet = item.getPocet_hodn();
 	    intent.putExtra(POCET_HODNOTITELU, pocet);
-	    
-	    System.out.println(NAZEV);
+	    */
+	    //System.out.println(NAZEV);
 	    mContext.startActivity(intent);
 	  
 	  
 	  
 	  return true;
 	}
+	@Override
+	public boolean onTap(GeoPoint p, MapView mapView) {
+		Memory.pickedPoint = p;
+		System.out.println(Memory.getPickedPoint());
+		return super.onTap(p, mapView);
+		
+	    
+	}
+	
 
 }

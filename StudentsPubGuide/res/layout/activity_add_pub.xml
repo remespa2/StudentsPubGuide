@@ -67,15 +67,32 @@
 
             
         </EditText>
+        
+        <LinearLayout
+            android:layout_width="match_parent" 
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+             >
+
+		<!-- <Button
+            android:id="@+id/buttonPick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nabrat Pozici"
+             /> -->
+		
 
         <Button
             android:id="@+id/buttonADD"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:width="100dp"
-            android:layout_gravity="right"
-            android:text="Přidej" />
-        
+            
+            android:text="Přidej"
+             />
+       
+        </LinearLayout>
     </LinearLayout>
+     
 
 </ScrollView>

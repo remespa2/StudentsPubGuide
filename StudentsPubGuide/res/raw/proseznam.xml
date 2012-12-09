@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml>
+            <Placemark>
+          <id>3</id>
+          <name>Bistro u Sklenářů</name>
+          <description>Restaurace s rychlým občerstvením. Oblíbené místo místních studentů středních škol.</description>
+          <latitude>50412982</latitude>
+          <longtitude>16164649</longtitude>
+          <hodnoceni>3.25</hodnoceni>
+          <pocet>2</pocet>
+          <vzdalenost>0</vzdalenost>
+        </Placemark>
+            <Placemark>
+          <id>7</id>
+          <name>sdfg</name>
+          <description>nic</description>
+          <latitude>50412982</latitude>
+          <longtitude>16164649</longtitude>
+          <hodnoceni>3</hodnoceni>
+          <pocet>2</pocet>
+          <vzdalenost>0</vzdalenost>
+        </Placemark>
+            <Placemark>
+          <id>8</id>
+          <name>io</name>
+          <description>uy</description>
+          <latitude>50412882</latitude>
+          <longtitude>16164549</longtitude>
+          <hodnoceni>4.5</hodnoceni>
+          <pocet>1</pocet>
+          <vzdalenost>141.42135623731</vzdalenost>
+        </Placemark>
+     </kml>
+
+
+
+

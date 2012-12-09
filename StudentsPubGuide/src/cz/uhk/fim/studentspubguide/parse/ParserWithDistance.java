@@ -7,6 +7,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import cz.uhk.fim.studentspubguide.memory.Memory;
+
 public class ParserWithDistance {
 	//http://www.java-samples.com/showtutorial.php?tutorialid=152
 	
@@ -58,7 +60,8 @@ public class ParserWithDistance {
 				//add it to list
 				//System.out.println("zprava z parseru"+pl.toString());
 				
-				myPlacemarks.add(pl);
+				//myPlacemarks.add(pl);
+				Memory.setPlacemarksWithDistance(pl);
 			}
 		}
 	}

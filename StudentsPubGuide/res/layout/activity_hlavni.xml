@@ -24,7 +24,7 @@
             android:layout_width="272dp"
             android:layout_height="wrap_content"
             android:text = "Mapa"
-            android:drawableLeft="@drawable/mapa_icon"
+            android:drawableLeft="@drawable/mapa_icon2"
             
              />
 
@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Seznam" 
-            android:drawableLeft="@drawable/seznam_icon"
+            android:drawableLeft="@drawable/seznam_icon2"
             />
 
         <Button
@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Přidat hospodu" 
-            android:drawableLeft="@drawable/pridat_icon"
+            android:drawableLeft="@drawable/pridat_icon2"
             />
 
         <Button
@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="O aplikaci" 
-            android:drawableLeft="@drawable/about_icon"
+            android:drawableLeft="@drawable/about_icon2"
             />
 
     </LinearLayout>

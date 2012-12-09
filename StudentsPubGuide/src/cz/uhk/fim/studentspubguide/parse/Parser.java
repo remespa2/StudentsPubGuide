@@ -7,13 +7,15 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import cz.uhk.fim.studentspubguide.memory.Memory;
+
 public class Parser {
 	//http://www.java-samples.com/showtutorial.php?tutorialid=152
-	private ArrayList<Placemark> myPlacemarks;
+	//private ArrayList<Placemark> myPlacemarks;
 	private Document dom;
 	
 	public Parser() throws InterruptedException, ExecutionException {
-		myPlacemarks = new ArrayList<Placemark>();
+		//myPlacemarks = new ArrayList<Placemark>();
 		
 		parseXmlFile();
 		parseDocument();
@@ -45,7 +47,8 @@ public class Parser {
 				//add it to list
 				//System.out.println("zprava z parseru"+pl.toString());
 				
-				myPlacemarks.add(pl);
+				//myPlacemarks.add(pl);
+				Memory.getPlacemarks().add(pl);
 			}
 		}
 	}
@@ -101,10 +104,10 @@ public class Parser {
 		return Integer.parseInt(getTextValue(ele,tagName));
 	}
 	
-	public ArrayList<Placemark> getMyPlacmarks(){
+	/*public ArrayList<Placemark> getMyPlacmarks(){
 	
 		return myPlacemarks;
-	}
+	}*/
 	
 	
 }
