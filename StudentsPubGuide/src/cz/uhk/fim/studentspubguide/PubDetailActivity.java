@@ -31,6 +31,8 @@ import android.widget.TextView;
 import cz.uhk.fim.studentspubguide.memory.Memory;
 import cz.uhk.fim.studentspubguide.parse.Base64;
 import cz.uhk.fim.studentspubguide.parse.Comment;
+import cz.uhk.fim.studentspubguide.parse.CommentPubTask;
+import cz.uhk.fim.studentspubguide.parse.RatePubTask;
 import cz.uhk.fim.studentspubguide.parse.ParserComments;
 import cz.uhk.fim.studentspubguide.parse.Placemark;
 
@@ -220,21 +222,12 @@ public class PubDetailActivity extends Activity {
 
 						// rate2 = (RatingBar) findViewById(R.id.ratingBar2);
 						try {
-							url = new URL(
-									"http://www.zkonachodsport.4fan.cz/StudentsPubGuide/index.php/feed/rate/"
-											+  Memory.trans.toString()  +"/"
-											+ String.valueOf(rate2.getRating()));
-							HttpURLConnection urlConnection = (HttpURLConnection) url
-									.openConnection();
-							InputStream in = new BufferedInputStream(
-									urlConnection.getInputStream());
-							urlConnection.disconnect();
-						} catch (MalformedURLException e) {
+							RatePubTask ppt = new RatePubTask(String.valueOf(rate2.getRating()), Memory.trans.toString());
+							ppt.execute(null);
+						} catch (Exception e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+						
 						}
 						System.out.println(url);
 						dialog.hide();
@@ -274,22 +267,12 @@ public class PubDetailActivity extends Activity {
 
 						// rate2 = (RatingBar) findViewById(R.id.ratingBar2);
 						try {
-							url = new URL(
-									"http://www.zkonachodsport.4fan.cz/StudentsPubGuide/index.php/feed/comment/"
-											+  Memory.trans.toString()  +"/"
-											+ Base64.encodeBytes(et.getText().toString().getBytes()));
-							HttpURLConnection urlConnection = (HttpURLConnection) url
-									.openConnection();
-							InputStream in = new BufferedInputStream(
-									urlConnection.getInputStream());
-							urlConnection.disconnect();
-						} catch (MalformedURLException e) {
+							CommentPubTask cpt = new CommentPubTask(et.getText().toString(), Memory.getTrans());
+							cpt.execute(null);
+						} catch (Exception e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+						} 
 						System.out.println(url);
 						dialog.hide();
 						

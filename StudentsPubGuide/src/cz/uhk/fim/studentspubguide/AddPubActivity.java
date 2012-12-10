@@ -1,12 +1,6 @@
 package cz.uhk.fim.studentspubguide;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-import cz.uhk.fim.studentspubguide.parse.Base64;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import cz.uhk.fim.studentspubguide.parse.AddPubTask;
 
 public class AddPubActivity extends Activity {
 	private int latitude, longitude;
@@ -92,18 +87,8 @@ public class AddPubActivity extends Activity {
     		   if(nazevS.equals("") || popisS.equals("") ){
     			   return;
     		   }
-    		   URL url = new URL("http://www.zkonachodsport.4fan.cz/StudentsPubGuide/index.php/feed/pridej/"
-    				   +Base64.encodeBytes(nazevS.getBytes())+"/"
-    				   +Base64.encodeBytes(popisS.getBytes())+"/"
-    				   +Base64.encodeBytes(komentarS.getBytes())+"/"
-    				   +rateS+"/"
-    				   +latitude+"/"
-    				   +longitude+"/"
-    				   );
-    		 System.out.println(url);
-        	 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-    	     InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-    	     urlConnection.disconnect();
+    		   AddPubTask apt = new AddPubTask(latitude, longitude, rateS, komentarS, popisS, nazevS);
+    		   apt.execute(null);
     	     
     	    } catch (Exception e) {
     	     e.printStackTrace();
